@@ -59,6 +59,6 @@ for uploaded_file in uploaded_files:
     output_text = message.content[0].text
     end = time.time()
 
-  with st.expander("Output"):
+  with st.expander(uploaded_file.name):
     st.write(output_text)
     st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
