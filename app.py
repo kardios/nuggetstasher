@@ -44,7 +44,8 @@ headers = {
 }
 get_response = requests.get(get_url, headers=headers)
 data = get_response.json()
-st.write(data)
+list_of_records = data['records']
+st.write(list_of_records)
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
 
