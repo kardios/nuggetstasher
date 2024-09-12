@@ -35,8 +35,7 @@ When creating your summary:
 - Avoid including minor details or examples unless they are crucial to understanding the main points.
 - Do not include your own opinions or interpretations; stick to the information provided in the original text.
 
-Remember, your summary must be presented as a single paragraph only. Aim for brevity while maintaining clarity and comprehensiveness.
-"""
+Remember, your summary must be presented as a single paragraph only, without preambles or headings. Aim for brevity while maintaining clarity and comprehensiveness."""
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
 
