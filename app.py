@@ -45,7 +45,9 @@ headers = {
 get_response = requests.get(get_url, headers=headers)
 data = get_response.json()
 list_of_records = data['records']
-st.write(list_of_records)
+for record in list_of_records:
+    st.write(record["field"]["Filename"])
+    st.write(record["field"]["Summary"])
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
 
