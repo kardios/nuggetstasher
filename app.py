@@ -2,7 +2,6 @@ import streamlit as st
 import os
 import time
 from pyairtable import Api
-from pyairtable import Table
 import requests
 import json
 from anthropic import Anthropic
@@ -38,12 +37,13 @@ When creating your summary:
 
 Remember, your summary must be presented directly as a single paragraph only, without preambles or headings. Aim for brevity while maintaining clarity and comprehensiveness."""
 
-table_name = "Nugget Stasher"
-api = Api(py_airtable_access_key)
-table = api.table(py_airtable_base_id, table_name)
-filename = "2024-09-09 - A glimpse inside the early years of President Thongloun Sisoulith.pdf"
-records = table.all()
-st.write(records)
+get_url = f'https://api.airtable.com/v0/{py_airtable_base_id}/{py_airtable_table_id}'
+headers = {
+    'Authorization': f'Bearer {py_airtable_access_key}',
+    'Content-Type': 'application/json',
+}
+response = requests.get(get_url, headers=headers)
+data = response.json()
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
 
