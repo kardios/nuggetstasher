@@ -59,7 +59,7 @@ for uploaded_file in uploaded_files:
     output_text = message.content[0].text
     end = time.time()
 
-  airtable_data = {"records": [{"fields": {'Name': uploaded_file.name, 'Output': output_text}}]}
+  airtable_data = {"records": [{"fields": {'Filename': uploaded_file.name, 'Summary': output_text}}]}
   insert_url = f'https://api.airtable.com/v0/{py_airtable_base_id}/{py_airtable_table_id}'
   headers = {'Authorization': f'Bearer {py_airtable_access_key}',
              'Content-Type': 'application/json'}
