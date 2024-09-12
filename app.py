@@ -42,9 +42,8 @@ table_name = "Nugget Stasher"
 api = Api(py_airtable_access_key)
 table = api.table(py_airtable_base_id, table_name)
 filename = "2024-09-09 - A glimpse inside the early years of President Thongloun Sisoulith.pdf"
-records = table.all(formula=f"{{Filename}} = '{filename}'")
-if records:
-  st.write(records)
+records = table.all()
+st.write(records)
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
 
