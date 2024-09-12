@@ -59,11 +59,12 @@ for uploaded_file in uploaded_files:
     output_text = message.content[0].text
     end = time.time()
 
-  airtable_data = {"records": [{"fields": {'Filename': uploaded_file.name, 'Summary': output_text}}]}
-  insert_url = f'https://api.airtable.com/v0/{py_airtable_base_id}/{py_airtable_table_id}'
-  headers = {'Authorization': f'Bearer {py_airtable_access_key}',
-             'Content-Type': 'application/json'}
-  insert_response = requests.post(insert_url, json = airtable_data, headers=headers)
+  with st.spinner("Stashing away....."):
+    airtable_data = {"records": [{"fields": {'Filename': uploaded_file.name, 'Summary': output_text}}]}
+    insert_url = f'https://api.airtable.com/v0/{py_airtable_base_id}/{py_airtable_table_id}'
+    headers = {'Authorization': f'Bearer {py_airtable_access_key}',
+               'Content-Type': 'application/json'}
+    insert_response = requests.post(insert_url, json = airtable_data, headers=headers)
   
   with st.expander(uploaded_file.name):
     st.write(output_text)
