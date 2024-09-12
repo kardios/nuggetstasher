@@ -40,7 +40,7 @@ Remember, your summary must be presented directly as a single paragraph only, wi
 
 filename = "2024-09-09 - A glimpse inside the early years of President Thongloun Sisoulith.pdf"
 table = Table(py_airtable_access_key, py_airtable_base_id, 'Nugget Stasher')
-records = table.all(formula=f"{{Filename}} = {filename})
+records = table.all(formula=f"{{Filename}} = '{filename}'")
 if records:
   st.write(records)
 
