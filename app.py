@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import time
 from pyairtable import Api
+from pyairtable import Table
 import requests
 import json
 from anthropic import Anthropic
@@ -36,6 +37,11 @@ When creating your summary:
 - Do not include your own opinions or interpretations; stick to the information provided in the original text.
 
 Remember, your summary must be presented directly as a single paragraph only, without preambles or headings. Aim for brevity while maintaining clarity and comprehensiveness."""
+
+table = Table(py_airtable_access_key, py_airtable_base_id, 'Nugget Stasher')
+records = table.all(formula=f"{{Filename}} = "2024-09-09 - A glimpse inside the early years of President Thongloun Sisoulith.pdf")
+if records:
+  st.write(records)
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
 
