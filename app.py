@@ -18,7 +18,7 @@ anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 st.set_page_config(page_title="NuggetStasher", page_icon=":sunglasses:",)
 st.write("**NuggetStasher** helps you condense knowledge and store for later")
 
-system_prompt = """You are an advanced AI reading assistant tasked with generating a concise and coherent summary of the given text. Your goal is to identify the main ideas and key details, presenting them in a clear and organized manner, as one single paragraph only.
+system_prompt = """You are an advanced AI reading assistant tasked with generating a concise and coherent summary of the given text. Your goal is to identify the main ideas and key details, presenting them in a clear and organized manner, as one single paragraph only, without preambles or headings.
 
 To complete this task, follow these steps:
 
@@ -35,7 +35,7 @@ When creating your summary:
 - Avoid including minor details or examples unless they are crucial to understanding the main points.
 - Do not include your own opinions or interpretations; stick to the information provided in the original text.
 
-Remember, your summary must be presented as a single paragraph only, without preambles or headings. Aim for brevity while maintaining clarity and comprehensiveness."""
+Remember, your summary must be presented directly as a single paragraph only, without preambles or headings. Aim for brevity while maintaining clarity and comprehensiveness."""
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
 
@@ -61,7 +61,7 @@ for uploaded_file in uploaded_files:
 
   filename = uploaded_file.name
 
-  airtable_data = {"records": [{"fields": {'Name': filename, 'Notes': output_text}}]}
+  airtable_data = {"records": [{"fields": {'Filename': filename, 'Summary': output_text}}]}
   insert_url = f'https://api.airtable.com/v0/{py_airtable_base_id}/{py_airtable_table_id}'
   headers = {'Authorization': f'Bearer {py_airtable_access_key}','Content-Type': 'application/json'}
   insert_response = requests.post(insert_url, json = airtable_data, headers = headers)
