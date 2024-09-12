@@ -39,8 +39,9 @@ When creating your summary:
 Remember, your summary must be presented directly as a single paragraph only, without preambles or headings. Aim for brevity while maintaining clarity and comprehensiveness."""
 
 table_name = "Nugget Stasher"
+api = Api(py_airtable_access_key)
+table = api.table(py_airtable_base_id, table_name)
 filename = "2024-09-09 - A glimpse inside the early years of President Thongloun Sisoulith.pdf"
-table = Table(py_airtable_access_key, py_airtable_base_id, table_name)
 records = table.all(formula=f"{{Filename}} = '{filename}'")
 if records:
   st.write(records)
