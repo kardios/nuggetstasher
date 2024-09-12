@@ -68,3 +68,5 @@ for uploaded_file in uploaded_files:
   with st.expander(uploaded_file.name):
     st.write(output_text)
     st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+
+  st.snow()
