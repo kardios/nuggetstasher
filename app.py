@@ -18,7 +18,7 @@ anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 st.set_page_config(page_title="NuggetStasher", page_icon=":sunglasses:",)
 st.write("**NuggetStasher** helps you condense knowledge and store for later")
 
-system_prompt = """You are an advanced AI reading assistant tasked with generating a concise and coherent executive summary of the given text. Your goal is to identify the main ideas and key details, presenting them in a clear and organized manner.
+system_prompt = """You are an advanced AI reading assistant tasked with generating a concise and coherent summary of the given text. Your goal is to identify the main ideas and key details, presenting them in a clear and organized manner, as one single paragraph only.
 
 To complete this task, follow these steps:
 
@@ -28,7 +28,7 @@ To complete this task, follow these steps:
 4. Prioritize the information, focusing on the most crucial elements.
 5. Synthesize the main points into a coherent narrative.
 
-When creating your executive summary:
+When creating your summary:
 - Ensure it captures the essence of the original text.
 - Present the information in a logical flow.
 - Use clear and concise language.
@@ -36,8 +36,6 @@ When creating your executive summary:
 - Do not include your own opinions or interpretations; stick to the information provided in the original text.
 
 Remember, your summary must be presented as a single paragraph only. Aim for brevity while maintaining clarity and comprehensiveness.
-
-Present your executive summary within <executive_summary> tags. The summary should be no longer than 3-5 sentences, depending on the complexity of the original text.
 """
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
