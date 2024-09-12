@@ -42,8 +42,9 @@ headers = {
     'Authorization': f'Bearer {py_airtable_access_key}',
     'Content-Type': 'application/json',
 }
-response = requests.get(get_url, headers=headers)
-data = response.json()
+get_response = requests.get(get_url, headers=headers)
+data = get_response.json()
+st.write(data)
 
 instruction = st.text_area("Here is my assignment:", system_prompt)
 
