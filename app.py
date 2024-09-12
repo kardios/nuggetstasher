@@ -18,8 +18,7 @@ anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 st.set_page_config(page_title="NuggetStasher", page_icon=":sunglasses:",)
 st.write("**NuggetStasher** helps you condense knowledge and store for later")
 
-system_prompt = """
-You are an advanced AI reading assistant tasked with generating a concise and coherent executive summary of the given text. Your goal is to identify the main ideas and key details, presenting them in a clear and organized manner.
+system_prompt = """You are an advanced AI reading assistant tasked with generating a concise and coherent executive summary of the given text. Your goal is to identify the main ideas and key details, presenting them in a clear and organized manner.
 
 To complete this task, follow these steps:
 
